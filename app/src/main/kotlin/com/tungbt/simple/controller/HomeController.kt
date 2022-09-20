@@ -1,5 +1,6 @@
 package com.tungbt.simple.controller
 
+import com.tungbt.util.audit.Audit
 import com.tungbt.util.common.IStringUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -13,6 +14,7 @@ class HomeController {
     lateinit var stringUtil: IStringUtil
 
     @GetMapping("home")
+    @Audit("HOME")
     fun home(): ResponseEntity<String> {
         var test: String? = "test";
         test = stringUtil.uppercase(test);
