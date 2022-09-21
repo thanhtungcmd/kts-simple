@@ -1,4 +1,4 @@
-package com.tungbt.simple
+package com.tungbt.author
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
