@@ -31,10 +31,6 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet
 
 import java.util.UUID
 
-
-
-
-
 @Configuration
 class AuthorizationServerConfig {
 
