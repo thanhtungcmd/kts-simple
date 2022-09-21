@@ -1,4 +1,4 @@
-package com.tungbt.author.controller
+package com.tungbt.app.controller
 
 import com.tungbt.util.audit.Audit
 import com.tungbt.util.common.IStringUtil

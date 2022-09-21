@@ -1,4 +1,4 @@
-package com.tungbt.author.config
+package com.tungbt.app.config
 
 import com.nimbusds.jose.jwk.JWKSelector
 import com.nimbusds.jose.jwk.JWKSet
@@ -25,7 +25,6 @@ import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
 import java.util.*
 
-
 @Configuration
 class AuthorizationServerConfig {
 
@@ -42,7 +41,8 @@ class AuthorizationServerConfig {
             .clientId("app")
             .clientSecret("{noop}secret")
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-            .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+            .redirectUri("https://oidcdebugger.com/debug")
             .scope("articles.read")
             .build()
 

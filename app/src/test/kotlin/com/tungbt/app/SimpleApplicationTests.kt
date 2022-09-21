@@ -1,4 +1,4 @@
-package com.tungbt.author
+package com.tungbt.app
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
