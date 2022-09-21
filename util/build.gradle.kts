@@ -14,11 +14,18 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
-    // aop
+    /** Audit */
     implementation("org.springframework.boot:spring-boot-starter-aop")
-    // security
+    /** Security */
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    /** PDF */
+    implementation("org.apache.poi:poi:3.10-FINAL")
+    implementation("fr.opensagres.xdocreport:org.apache.poi.xwpf.converter.core:1.0.6")
+    implementation("fr.opensagres.xdocreport:org.apache.poi.xwpf.converter.pdf:1.0.6")
+    implementation("fr.opensagres.xdocreport:fr.opensagres.xdocreport.itext.extension:2.0.0")
+    implementation("itext:itext:1.3.1")
+    implementation("org.apache.poi:poi-ooxml-schemas:3.10-FINAL")
     // other
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
