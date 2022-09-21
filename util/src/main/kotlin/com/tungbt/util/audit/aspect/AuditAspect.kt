@@ -17,7 +17,7 @@ class AuditAspect {
     private val logger: Logger = LoggerFactory.getLogger(AuditAspect::class.java)
 
     @Around("@annotation(com.tungbt.util.audit.Audit)")
-    fun aroundAdvice(joinPoint: ProceedingJoinPoint) : Object {
+    fun aroundAdvice(joinPoint: ProceedingJoinPoint) : Any {
         var startTime: Long = System.currentTimeMillis()
         // get param
         var signature: MethodSignature = joinPoint.signature as MethodSignature
