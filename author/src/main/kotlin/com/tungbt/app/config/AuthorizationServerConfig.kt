@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration
 import org.springframework.security.oauth2.core.AuthorizationGrantType
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod
+import org.springframework.security.oauth2.core.oidc.OidcScopes
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository
@@ -24,6 +25,15 @@ import java.security.KeyPairGenerator
 import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
 import java.util.*
+import org.springframework.security.oauth2.server.authorization.config.TokenSettings
+import java.time.Duration
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet
+
+import java.util.UUID
+
+
+
+
 
 @Configuration
 class AuthorizationServerConfig {
@@ -43,6 +53,7 @@ class AuthorizationServerConfig {
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
             .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
             .redirectUri("https://oidcdebugger.com/debug")
+            .scope(OidcScopes.OPENID)
             .scope("articles.read")
             .build()
 
@@ -51,31 +62,39 @@ class AuthorizationServerConfig {
 
     @Bean
     fun jwkSource(): JWKSource<SecurityContext> {
-        val rsaKey = generateRsa()
-        val jwkSet = JWKSet(rsaKey)
-        return JWKSource { jwkSelector: JWKSelector, _: SecurityContext -> jwkSelector.select(jwkSet) }
-    }
-
-    private fun generateRsa(): RSAKey {
-        val keyPair: KeyPair = generateRsaKey()
+        val keyPair = generateRsaKey()
         val publicKey = keyPair.public as RSAPublicKey
         val privateKey = keyPair.private as RSAPrivateKey
-        return RSAKey.Builder(publicKey)
+        val rsaKey = RSAKey.Builder(publicKey)
             .privateKey(privateKey)
             .keyID(UUID.randomUUID().toString())
             .build()
+        val jwkSet = JWKSet(rsaKey)
+        return ImmutableJWKSet(jwkSet)
     }
 
     private fun generateRsaKey(): KeyPair {
-        val keyPairGenerator = KeyPairGenerator.getInstance("RSA")
-        keyPairGenerator.initialize(2048)
-        return keyPairGenerator.generateKeyPair()
+        val keyPair: KeyPair = try {
+            val keyPairGenerator = KeyPairGenerator.getInstance("RSA")
+            keyPairGenerator.initialize(2048)
+            keyPairGenerator.generateKeyPair()
+        } catch (ex: Exception) {
+            throw IllegalStateException(ex)
+        }
+        return keyPair
     }
 
     @Bean
     fun providerSettings(): ProviderSettings {
         return ProviderSettings.builder()
             .issuer("http://localhost:8080")
+            .build()
+    }
+
+    @Bean
+    fun tokenSettings(): TokenSettings {
+        return TokenSettings.builder()
+            .accessTokenTimeToLive(Duration.ofMinutes(30L))
             .build()
     }
 
