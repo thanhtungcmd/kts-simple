@@ -1,7 +1,10 @@
 package com.tungbt.app.controller
 
+import com.tungbt.app.dto.response.HomeResponse
+import com.tungbt.app.dto.response.HomeResponse.Companion.response
 import com.tungbt.util.audit.Audit
 import com.tungbt.util.common.IStringUtil
+import com.tungbt.util.rest.request.Result
 import com.tungbt.util.security.util.SecurityUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -20,10 +23,13 @@ class HomeController {
 
     @GetMapping("home")
     @Audit("HOME")
-    fun home(): ResponseEntity<String> {
+    fun home(): HomeResponse {
         var test: String? = "test";
-        test = stringUtil.uppercase(test);
-        return ResponseEntity.ok(test)
+        test = stringUtil.uppercase(test)
+        return response {
+            data = test
+            result = Result.OK
+        }
     }
 
     @GetMapping("info")
