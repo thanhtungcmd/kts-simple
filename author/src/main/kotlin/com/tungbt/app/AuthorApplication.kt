@@ -1,5 +1,6 @@
 package com.tungbt.app
 
+import com.tungbt.app.util.GenerateUtil
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -7,5 +8,7 @@ import org.springframework.boot.runApplication
 class AuthorApplication
 
 fun main(args: Array<String>) {
-	runApplication<AuthorApplication>(*args)
+	var applicationContext = runApplication<AuthorApplication>(*args)
+	var generateUtil: GenerateUtil = applicationContext.getBean(GenerateUtil::class.java)
+	generateUtil.generateDummyUsers()
 }
