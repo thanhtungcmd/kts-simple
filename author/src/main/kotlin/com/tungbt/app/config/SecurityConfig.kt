@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
@@ -35,9 +36,9 @@ class SecurityConfig {
     }
 
     @Bean
-    fun authManager(userDetailService: MyUserDetailService, http: HttpSecurity): AuthenticationManager  {
+    fun authManager(http: HttpSecurity): AuthenticationManager  {
         return http.getSharedObject(AuthenticationManagerBuilder::class.java).userDetailsService(myUserDetailService)
-            .passwordEncoder(this.encoder())
+            .passwordEncoder(encoder())
             .and()
             .authenticationProvider(this.authenticationProvider())
             .jdbcAuthentication()
@@ -47,15 +48,15 @@ class SecurityConfig {
 
     @Bean
     fun authenticationProvider(): DaoAuthenticationProvider {
-        val authProvider: DaoAuthenticationProvider = DaoAuthenticationProvider()
+        val authProvider = DaoAuthenticationProvider()
         authProvider.setUserDetailsService(myUserDetailService)
-        authProvider.setPasswordEncoder(this.encoder())
+        authProvider.setPasswordEncoder(encoder())
         return authProvider
     }
 
     @Bean
     fun encoder(): PasswordEncoder {
-        return BCryptPasswordEncoder(11)
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder()
     }
 
 }
