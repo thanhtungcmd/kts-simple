@@ -8,7 +8,7 @@ import org.springframework.boot.runApplication
 class AuthorApplication
 
 fun main(args: Array<String>) {
-	var applicationContext = runApplication<AuthorApplication>(*args)
-	var generateUtil: GenerateUtil = applicationContext.getBean(GenerateUtil::class.java)
+	val applicationContext = runApplication<AuthorApplication>(*args)
+	val generateUtil: GenerateUtil = applicationContext.getBean(GenerateUtil::class.java)
 	generateUtil.generateDummyUsers()
 }

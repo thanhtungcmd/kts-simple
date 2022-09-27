@@ -48,6 +48,7 @@ class AuthorizationServerConfig {
             .redirectUri("https://oidcdebugger.com/debug")
             .scope(OidcScopes.OPENID)
             .scope("articles.read")
+            .tokenSettings(tokenSettings())
             .build()
 
         val registeredClientOne: RegisteredClient = RegisteredClient.withId(UUID.randomUUID().toString())

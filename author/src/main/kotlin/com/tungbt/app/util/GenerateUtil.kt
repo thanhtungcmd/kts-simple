@@ -18,7 +18,7 @@ class GenerateUtil {
     fun generateDummyUsers() {
         val passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder()
         var userOne = User(null, "admin", passwordEncoder.encode("password"))
-        userRepository.save(userOne)
+        //userRepository.save(userOne)
     }
 
 }
