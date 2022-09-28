@@ -8,3 +8,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080
+# Util
+tungbt:
+  telegrambot:
+    token: 5721621056:AAGGG-1J2nrI7BInxui4dSpElcwLCynB1Kg

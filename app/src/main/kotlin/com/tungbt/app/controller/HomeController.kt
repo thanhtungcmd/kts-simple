@@ -6,6 +6,8 @@ import com.tungbt.util.audit.Audit
 import com.tungbt.util.common.IStringUtil
 import com.tungbt.util.rest.request.Result
 import com.tungbt.util.security.util.SecurityUtil
+import com.tungbt.util.telegrambot.ITelegramBot
+import com.tungbt.util.telegrambot.impl.TelegramBot
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
@@ -21,11 +23,24 @@ class HomeController {
     @Autowired
     lateinit var securityUtil: SecurityUtil
 
+    @Autowired
+    lateinit var telegramBot: ITelegramBot
+
     @GetMapping("home")
     @Audit("HOME")
     fun home(): HomeResponse {
         var test: String? = "test";
         test = stringUtil.uppercase(test)
+        return response {
+            data = test
+            result = Result.OK
+        }
+    }
+
+    @GetMapping("test")
+    @Audit("TEST")
+    fun test(): HomeResponse {
+        val test: String? = telegramBot.getMe()
         return response {
             data = test
             result = Result.OK

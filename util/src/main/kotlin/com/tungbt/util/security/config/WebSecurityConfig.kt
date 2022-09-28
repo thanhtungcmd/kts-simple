@@ -27,7 +27,8 @@ open class WebSecurityConfig {
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         /** Authenticate */
         .authorizeRequests { authz ->
-            authz.anyRequest().authenticated()
+            authz.antMatchers("/test").permitAll()
+            .anyRequest().authenticated()
         }
         /** Resource Server */
         .oauth2ResourceServer().jwt()
