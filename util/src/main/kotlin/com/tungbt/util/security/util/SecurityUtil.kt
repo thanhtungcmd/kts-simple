@@ -15,7 +15,7 @@ class SecurityUtil {
         val authorities: Collection<String> = principal.authorities
             .stream()
             .map(GrantedAuthority::getAuthority)
-            .collect(Collectors.toList());
+            .collect(Collectors.toList())
 
         val info: MutableMap<String, Any> = HashMap()
         info["name"] = principal.name

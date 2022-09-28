@@ -13,6 +13,8 @@ import okio.BufferedSink
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import java.lang.StringBuilder
+import java.net.URLEncoder
 
 @Component
 class RestUtil: IRestUtil {
@@ -22,7 +24,14 @@ class RestUtil: IRestUtil {
     private val client: OkHttpClient = OkHttpClient.Builder().readTimeout(5, TimeUnit.MINUTES).writeTimeout(5, TimeUnit.MINUTES).build()
 
     override fun callGet(url: String, headers: Map<String, String>, params: Map<String, String>): String {
-        TODO("Not yet implemented")
+        logger.info("HttpOk url: {} body: {}", url, params)
+        val request = Request.Builder()
+            .url("$url?"+paramConvert(params))
+            .headers(headers.toHeaders())
+            .build()
+        val response: String = client.newCall(request).execute().body.toString()
+        logger.info("HttpOk response: {}", response)
+        return response
     }
 
     override fun callPost(url: String, headers: Map<String, String>, body: Map<String, String>): String {
@@ -38,5 +47,29 @@ class RestUtil: IRestUtil {
         return response
     }
 
+    private fun paramConvert(map: Map<String, String>): String {
+        val sb = StringBuilder()
+        for ((key, value) in map) {
+            if (sb.isNotEmpty()) {
+                sb.append("&")
+            }
+            sb.append(
+                String.format(
+                    "%s=%s",
+                    urlEncodeUtf8(key),
+                    urlEncodeUtf8(value)
+                )
+            )
+        }
+        return sb.toString()
+    }
+
+    private fun urlEncodeUtf8(s: String?): String? {
+        return try {
+            URLEncoder.encode(s, "UTF-8")
+        } catch (e: Exception) {
+            throw UnsupportedOperationException(e)
+        }
+    }
 
 }
