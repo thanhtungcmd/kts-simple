@@ -40,7 +40,7 @@ class HomeController {
     @GetMapping("test")
     @Audit("TEST")
     fun test(): HomeResponse {
-        val test: String? = telegramBot.getMe()
+        val test: String? = telegramBot.getUpdates()
         return response {
             data = test
             result = Result.OK

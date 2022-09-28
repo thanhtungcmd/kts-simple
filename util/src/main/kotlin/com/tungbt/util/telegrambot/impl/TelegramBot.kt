@@ -22,4 +22,18 @@ class TelegramBot: ITelegramBot {
         return response
     }
 
+    override fun sendMessage(chatId: String, text: String): String? {
+        val body: MutableMap<String, String> = mutableMapOf(
+            "chat_id" to chatId,
+            "text" to text,
+            "parse_mode" to "html")
+        val response: String? = restUtil.callPost("$url$token/sendMessage", body)
+        return response
+    }
+
+    override fun getUpdates(): String? {
+        val response: String? = restUtil.callPost("$url$token/getUpdates")
+        return response
+    }
+
 }
