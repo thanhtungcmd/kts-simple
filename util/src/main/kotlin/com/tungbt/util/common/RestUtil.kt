@@ -1,6 +1,6 @@
 package com.tungbt.util.common
 
-interface IRestUtil {
+interface RestUtil {
 
     fun callGet(url:String, headers: Map<String, String>, params: Map<String, String>): String?
 

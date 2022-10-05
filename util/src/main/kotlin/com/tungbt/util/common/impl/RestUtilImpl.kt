@@ -1,7 +1,7 @@
 package com.tungbt.util.common.impl
 
 import com.google.gson.Gson
-import com.tungbt.util.common.IRestUtil
+import com.tungbt.util.common.RestUtil
 import okhttp3.Headers.Companion.toHeaders
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -15,7 +15,7 @@ import java.net.URLEncoder
 import java.util.concurrent.TimeUnit
 
 @Component
-class RestUtil: IRestUtil {
+class RestUtilImpl: RestUtil {
 
     private val logger: Logger = LoggerFactory.getLogger(RestUtil::class.java)
     private val mediaType: MediaType? = "application/json; charset=utf-8".toMediaTypeOrNull()

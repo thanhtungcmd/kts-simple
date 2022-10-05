@@ -3,11 +3,10 @@ package com.tungbt.app.controller
 import com.tungbt.app.dto.response.HomeResponse
 import com.tungbt.app.dto.response.HomeResponse.Companion.response
 import com.tungbt.util.audit.Audit
-import com.tungbt.util.common.IStringUtil
+import com.tungbt.util.common.StringUtil
 import com.tungbt.util.rest.request.Result
 import com.tungbt.util.security.util.SecurityUtil
 import com.tungbt.util.telegrambot.ITelegramBot
-import com.tungbt.util.telegrambot.impl.TelegramBot
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController
 class HomeController {
 
     @Autowired
-    lateinit var stringUtil: IStringUtil
+    lateinit var stringUtil: StringUtil
 
     @Autowired
     lateinit var securityUtil: SecurityUtil
@@ -30,7 +29,7 @@ class HomeController {
     @Audit("HOME")
     fun home(): HomeResponse {
         var test: String? = "test";
-        test = stringUtil.uppercase(test)
+        test = stringUtil.upper(test)
         return response {
             data = test
             result = Result.OK

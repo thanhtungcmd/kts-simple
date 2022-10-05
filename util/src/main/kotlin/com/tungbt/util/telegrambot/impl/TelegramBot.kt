@@ -1,6 +1,6 @@
 package com.tungbt.util.telegrambot.impl
 
-import com.tungbt.util.common.IRestUtil
+import com.tungbt.util.common.RestUtil
 import com.tungbt.util.telegrambot.ITelegramBot
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -15,7 +15,7 @@ class TelegramBot: ITelegramBot {
     lateinit var token: String
 
     @Autowired
-    lateinit var restUtil: IRestUtil
+    lateinit var restUtil: RestUtil
 
     override fun getMe(): String? {
         val response: String? = restUtil.callPost("$url$token/getMe")

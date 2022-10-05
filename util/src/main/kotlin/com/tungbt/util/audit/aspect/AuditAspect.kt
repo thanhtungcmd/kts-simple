@@ -18,6 +18,8 @@ class AuditAspect {
 
     @Around("@annotation(com.tungbt.util.audit.Audit)")
     fun aroundAdvice(joinPoint: ProceedingJoinPoint) : Any {
+        logger.info("===== Start =====")
+        //val params: List<Any> = catchParam
         var startTime: Long = System.currentTimeMillis()
         // get param
         var signature: MethodSignature = joinPoint.signature as MethodSignature
