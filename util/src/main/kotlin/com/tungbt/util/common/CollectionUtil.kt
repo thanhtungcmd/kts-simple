@@ -38,9 +38,7 @@ interface CollectionUtil {
 
     fun <E> distinct(c: Collection<E>): List<E>
 
-    fun <E> distinct(vararg a: E): List<E>?
-
-    fun <E> `in`(a: Collection<E>?, b: Collection<E>?): MutableList<Any?>?
+    fun <E> distinct(a: Array<E>): List<E>
 
     fun <E> minus(a: Collection<E>, b: Collection<E>): List<E>?
 

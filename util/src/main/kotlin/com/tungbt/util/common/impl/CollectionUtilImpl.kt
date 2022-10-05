@@ -81,21 +81,8 @@ class CollectionUtilImpl : CollectionUtil {
         return toList(c).stream().distinct().collect(Collectors.toList())
     }
 
-    override fun <E> distinct(vararg a: E): List<E>? {
+    override fun <E> distinct(a: Array<E>): List<E> {
         return toList(*a).stream().distinct().collect(Collectors.toList())
-    }
-
-    override fun <E> `in`(a: Collection<E>?, b: Collection<E>?): MutableList<Any?>? {
-        val aa: List<E>? = distinct(a) as List<E>?
-        val bb: List<E>? = distinct(b) as List<E>?
-        return plus(
-            aa!!.stream().filter { o: E -> bb!!.contains(o) }.collect(Collectors.toList()),
-            bb!!.stream().filter { o: E ->
-                aa.contains(
-                    o
-                )
-            }.collect(Collectors.toList())
-        )
     }
 
     override fun <E> minus(a: Collection<E>, b: Collection<E>): List<E>? {

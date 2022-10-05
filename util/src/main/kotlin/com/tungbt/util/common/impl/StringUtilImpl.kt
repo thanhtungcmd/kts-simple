@@ -1,15 +1,10 @@
 package com.tungbt.util.common.impl
 
-import com.tungbt.util.common.CollectionUtil
 import com.tungbt.util.common.StringUtil
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component
 class StringUtilImpl: StringUtil {
-
-    @Autowired
-    lateinit var collectionUtil: CollectionUtil
 
     override fun <V> parse(v: V?): String {
         if (v == null) {
