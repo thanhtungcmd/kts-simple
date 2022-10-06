@@ -1,13 +1,13 @@
 package com.tungbt.util.telegrambot.impl
 
 import com.tungbt.util.common.RestUtil
-import com.tungbt.util.telegrambot.ITelegramBot
+import com.tungbt.util.telegrambot.TelegramBot
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-class TelegramBot: ITelegramBot {
+class TelegramBotImpl: TelegramBot {
 
     private val url: String = "https://api.telegram.org/bot"
 

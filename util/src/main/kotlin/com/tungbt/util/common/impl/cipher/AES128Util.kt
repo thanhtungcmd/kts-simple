@@ -12,7 +12,7 @@ import javax.crypto.spec.SecretKeySpec
 @Component
 class AES128Util: CipherUtil {
 
-    private val ALGORITHM = "AES/ECB/NoPadding"
+    private val ALGORITHM = "AES"
 
     @Autowired
     lateinit var stringUtil: StringUtil

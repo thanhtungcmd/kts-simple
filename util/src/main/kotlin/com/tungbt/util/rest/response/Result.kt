@@ -1,10 +1,5 @@
-package com.tungbt.util.rest.request
+package com.tungbt.util.rest.response
 
-import lombok.AllArgsConstructor
-import lombok.Data
-
-@Data
-@AllArgsConstructor
 interface Result {
     var result: Boolean
     var message: String?

@@ -1,6 +1,6 @@
 package com.tungbt.util.telegrambot
 
-interface ITelegramBot {
+interface TelegramBot {
 
     fun getMe(): String?
 

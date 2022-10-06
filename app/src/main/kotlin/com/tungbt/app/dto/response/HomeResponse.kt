@@ -1,13 +1,12 @@
 package com.tungbt.app.dto.response
 
-import com.tungbt.util.rest.request.BaseResponse
-import com.tungbt.util.rest.request.Result
-
+import com.tungbt.util.rest.response.BaseResponseAbstract
+import com.tungbt.util.rest.response.Result
 
 class HomeResponse(
     override var data: Any?,
     override var result: Result
-) : BaseResponse() {
+) : BaseResponseAbstract() {
 
     private constructor(builder: Builder) : this(builder.data, builder.result)
 

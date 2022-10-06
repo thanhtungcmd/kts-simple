@@ -8,6 +8,7 @@ import java.security.spec.PKCS8EncodedKeySpec
 import java.security.spec.X509EncodedKeySpec
 import java.util.*
 import javax.crypto.Cipher
+import javax.xml.bind.DatatypeConverter
 
 @Component
 class RSA1028Util: CipherUtil {
@@ -19,7 +20,7 @@ class RSA1028Util: CipherUtil {
     }
 
     override fun encrypt(value: String?, key: String?): String? {
-        val spec = X509EncodedKeySpec(key?.toByteArray())
+        val spec = X509EncodedKeySpec(Base64.getDecoder().decode(key?.toByteArray()))
         val factory: KeyFactory = KeyFactory.getInstance(ALGORITHM)
         val pubKey: PublicKey = factory.generatePublic(spec)
         val c: Cipher = Cipher.getInstance(ALGORITHM)
@@ -33,10 +34,10 @@ class RSA1028Util: CipherUtil {
     }
 
     override fun decrypt(data: String?, key: String?): String {
-        val spec = PKCS8EncodedKeySpec(key?.toByteArray())
-        val factory = KeyFactory.getInstance("RSA")
+        val spec = PKCS8EncodedKeySpec(Base64.getDecoder().decode(key?.toByteArray()))
+        val factory = KeyFactory.getInstance(ALGORITHM)
         val priKey = factory.generatePrivate(spec)
-        val c = Cipher.getInstance("RSA")
+        val c = Cipher.getInstance(ALGORITHM)
         c.init(Cipher.DECRYPT_MODE, priKey)
         return String(c.doFinal(Base64.getDecoder().decode(data)))
     }
