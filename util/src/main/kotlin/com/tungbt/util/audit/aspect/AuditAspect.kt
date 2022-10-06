@@ -24,23 +24,24 @@ class AuditAspect {
     @Around("@annotation(com.tungbt.util.audit.Audit)")
     fun aroundAdvice(joinPoint: ProceedingJoinPoint) : Any {
         val audit: Audit = getAudit(joinPoint)
-        logger.info("{} ===== Start {} =====", reflectUtil.getStack(), audit.name)
+        logger.info("{} =========== Start {} ===========", reflectUtil.getStack(), audit.name)
         try {
             val proceed: Any = joinPoint.proceed() as Any
             return proceed
         } catch (ex: Throwable) {
-            logger.error("{} ===== An error occur when execute {} =====", reflectUtil.getStack(), audit.name)
+            logger.error("{} =========== An error occur when execute {} ===========", reflectUtil.getStack(), audit.name)
             throw ex
+        } finally {
+            logger.info("{} =========== End {} ===========", reflectUtil.getStack(), audit.name)
         }
     }
 
     @Around("@annotation(com.tungbt.util.audit.ExecuteTime)")
     fun executeTime(joinPoint: ProceedingJoinPoint) : Any {
-        val audit: Audit = getAudit(joinPoint)
         val startTime: Long = System.currentTimeMillis()
         val proceed: Any = joinPoint.proceed() as Any
         val takeTime: Long = System.currentTimeMillis() - startTime
-        logger.info("Time Taken by {} is {} milli second", audit.name, takeTime)
+        logger.info("{} Method={}, executed in duration (ms)={}", reflectUtil.getStack(), joinPoint.getSignature(), takeTime)
         return proceed
     }
 
@@ -49,7 +50,5 @@ class AuditAspect {
         val method: Method = signature.method
         return method.getAnnotation(Audit::class.java)
     }
-
-    //private fun getParam(joinPoint: ProceedingJoinPoint): Audit {
 
 }

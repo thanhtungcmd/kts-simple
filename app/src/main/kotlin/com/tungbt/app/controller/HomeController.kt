@@ -3,6 +3,7 @@ package com.tungbt.app.controller
 import com.tungbt.app.dto.response.HomeResponse
 import com.tungbt.app.dto.response.HomeResponse.Companion.response
 import com.tungbt.util.audit.Audit
+import com.tungbt.util.audit.ExecuteTime
 import com.tungbt.util.common.StringUtil
 import com.tungbt.util.rest.request.Result
 import com.tungbt.util.security.util.SecurityUtil
@@ -27,6 +28,7 @@ class HomeController {
 
     @GetMapping("home")
     @Audit("HOME")
+    @ExecuteTime
     fun home(): HomeResponse {
         var test: String? = "test";
         test = stringUtil.upper(test)
@@ -38,6 +40,7 @@ class HomeController {
 
     @GetMapping("test")
     @Audit("TEST")
+    @ExecuteTime
     fun test(): HomeResponse {
         val test: String? = telegramBot.getUpdates()
         return response {

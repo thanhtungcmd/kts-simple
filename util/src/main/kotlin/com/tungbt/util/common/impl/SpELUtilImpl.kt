@@ -2,6 +2,7 @@ package com.tungbt.util.common.impl
 
 import com.tungbt.util.common.CollectionUtil
 import com.tungbt.util.common.ReflectUtil
+import com.tungbt.util.common.SpELUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.expression.Expression
 import org.springframework.expression.ExpressionParser
@@ -10,8 +11,10 @@ import java.lang.reflect.Method
 
 import java.util.stream.Collectors
 import org.springframework.expression.spel.standard.SpelExpressionParser
+import org.springframework.stereotype.Component
 
-class SpELUtilImpl {
+@Component
+class SpELUtilImpl : SpELUtil {
 
     private val expressionParser: ExpressionParser = SpelExpressionParser()
 
@@ -21,7 +24,7 @@ class SpELUtilImpl {
     @Autowired
     lateinit var collectionUtil: CollectionUtil
 
-    fun catchArgs(keys: Array<String>, method: Method, args: Array<Any>): List<Any?>? {
+    override fun catchArgs(keys: Array<String>, method: Method, args: Array<Any>): List<Any?>? {
         val ks: List<String> = collectionUtil.distinct(keys)
         if (collectionUtil.isEmpty(ks) || collectionUtil.isEmpty(args)) {
             return collectionUtil.emptyList()
@@ -51,7 +54,7 @@ class SpELUtilImpl {
 
     private fun <T> catchValue(key: String, context: StandardEvaluationContext, args: Array<Any>): T? {
         return try {
-            val expression: Expression = expressionParser.parseExpression(key) ?: return null
+            val expression: Expression = expressionParser.parseExpression(key)
             var value: T? = catchValue(expression, args)
             if (value == null) {
                 value = catchValue(expression, context)
