@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "2.7.3"
     id("io.spring.dependency-management") version "1.0.13.RELEASE"
     kotlin("jvm") version "1.6.21"
+    id("maven-publish")
 }
 
 group = "com.tungbt"
@@ -12,6 +13,24 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/thanhtungcmd/kts-simple")
+            credentials {
+                username = "thanhtungcmd"
+                password = "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"
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
+        }
+    }
 }
 
 dependencies {
