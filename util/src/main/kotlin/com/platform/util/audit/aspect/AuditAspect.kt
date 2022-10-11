@@ -41,7 +41,7 @@ class AuditAspect {
         val startTime: Long = System.currentTimeMillis()
         val proceed: Any = joinPoint.proceed() as Any
         val takeTime: Long = System.currentTimeMillis() - startTime
-        logger.info("{} Method={}, executed in duration (ms)={}", reflectUtil.getStack(), joinPoint.getSignature(), takeTime)
+        logger.info("{} Method={}, executed in duration (ms)={}", reflectUtil.getStack(), joinPoint.signature, takeTime)
         return proceed
     }
 

@@ -1,4 +1,4 @@
-package com.tungbt.app.controller
+package com.platform.app.controller
 
 import com.tungbt.app.dto.response.HomeResponse
 import com.tungbt.app.dto.response.HomeResponse.Companion.response
@@ -6,10 +6,9 @@ import com.tungbt.util.audit.Audit
 import com.tungbt.util.audit.ExecuteTime
 import com.tungbt.util.common.CipherUtil
 import com.tungbt.util.common.StringUtil
-import com.tungbt.util.common.impl.cipher.RSA1028Util
-import com.tungbt.util.rest.response.Result
 import com.tungbt.util.security.util.SecurityUtil
 import com.tungbt.util.telegrambot.TelegramBot
+import com.tungbt.util.rest.response.Result
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.ResponseEntity
@@ -49,12 +48,12 @@ class HomeController {
     @Audit("TEST")
     @ExecuteTime
     fun test(): HomeResponse {
-        //val test: String? = telegramBot.getUpdates()
-        val encode: String = stringUtil.nvl(cipherUtil.encrypt("123", "6w9zzz&F)J@NcQfT"))
-        val decode: String = stringUtil.nvl(cipherUtil.decrypt(encode, "6w9zzz&F)J@NcQfT"))
-        val list = mutableListOf(encode, decode)
+        val test: String? = telegramBot.getUpdates()
+        //val encode: String = stringUtil.nvl(cipherUtil.encrypt("123", "6w9zzz&F)J@NcQfT"))
+        //val decode: String = stringUtil.nvl(cipherUtil.decrypt(encode, "6w9zzz&F)J@NcQfT"))
+        //val list = mutableListOf(encode, decode)
         return response {
-            data = list
+            data = test
             result = Result.OK
         }
     }

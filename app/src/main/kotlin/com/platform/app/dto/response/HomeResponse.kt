@@ -1,4 +1,4 @@
-package com.tungbt.app.dto.response
+package com.platform.app.dto.response
 
 import com.tungbt.util.rest.response.BaseResponseAbstract
 import com.tungbt.util.rest.response.Result

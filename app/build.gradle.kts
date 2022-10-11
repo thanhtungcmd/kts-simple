@@ -23,7 +23,7 @@ repositories {
 		url = uri("https://maven.pkg.github.com/thanhtungcmd/kts-simple")
 		credentials {
 			username = "thanhtungcmd"
-			password = "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"
+			password = "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"
 		}
 	}
 }
@@ -33,9 +33,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("com.tungbt.util:0.0.1-SNAPSHOT")
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
+	implementation("com.tungbt:util:0.0.1-SNAPSHOT")
+//	implementation(project(":util"))
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation(kotlin("stdlib-jdk8"))
 }
