@@ -1,7 +1,7 @@
 package com.platform.app.dto.response
 
-import com.tungbt.util.rest.response.BaseResponseAbstract
-import com.tungbt.util.rest.response.Result
+import com.platform.util.rest.response.BaseResponseAbstract
+import com.platform.util.rest.response.Result
 
 class HomeResponse(
     override var data: Any?,

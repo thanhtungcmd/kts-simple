@@ -1,4 +1,4 @@
-package com.tungbt.util.audit
+package com.platform.util.audit
 
 
 @Target(AnnotationTarget.FUNCTION)

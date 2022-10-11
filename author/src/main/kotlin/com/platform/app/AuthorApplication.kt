@@ -1,4 +1,4 @@
-package com.tungbt.app
+package com.platform.app
 
 import com.tungbt.app.util.GenerateUtil
 import org.springframework.boot.autoconfigure.SpringBootApplication

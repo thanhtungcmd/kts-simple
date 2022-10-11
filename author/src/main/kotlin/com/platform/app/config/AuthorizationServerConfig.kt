@@ -1,4 +1,4 @@
-package com.tungbt.app.config
+package com.platform.app.config
 
 import com.nimbusds.jose.jwk.JWKSet
 import com.nimbusds.jose.jwk.RSAKey

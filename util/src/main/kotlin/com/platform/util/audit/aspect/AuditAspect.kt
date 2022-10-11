@@ -1,7 +1,7 @@
-package com.tungbt.util.audit.aspect
+package com.platform.util.audit.aspect
 
-import com.tungbt.util.audit.Audit
-import com.tungbt.util.common.ReflectUtil
+import com.platform.util.audit.Audit
+import com.platform.util.common.ReflectUtil
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
@@ -21,7 +21,7 @@ class AuditAspect {
 
     private val logger: Logger = LoggerFactory.getLogger(AuditAspect::class.java)
 
-    @Around("@annotation(com.tungbt.util.audit.Audit)")
+    @Around("@annotation(com.platform.util.audit.Audit)")
     fun aroundAdvice(joinPoint: ProceedingJoinPoint) : Any {
         val audit: Audit = getAudit(joinPoint)
         logger.info("{} =========== Start {} ===========", reflectUtil.getStack(), audit.name)
@@ -36,7 +36,7 @@ class AuditAspect {
         }
     }
 
-    @Around("@annotation(com.tungbt.util.audit.ExecuteTime)")
+    @Around("@annotation(com.platform.util.audit.ExecuteTime)")
     fun executeTime(joinPoint: ProceedingJoinPoint) : Any {
         val startTime: Long = System.currentTimeMillis()
         val proceed: Any = joinPoint.proceed() as Any

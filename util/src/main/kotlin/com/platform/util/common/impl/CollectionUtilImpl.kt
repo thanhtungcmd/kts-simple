@@ -1,6 +1,6 @@
-package com.tungbt.util.common.impl
+package com.platform.util.common.impl
 
-import com.tungbt.util.common.CollectionUtil
+import com.platform.util.common.CollectionUtil
 import org.springframework.stereotype.Component
 import java.util.*
 import java.util.stream.Collectors

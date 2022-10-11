@@ -1,4 +1,4 @@
-package com.tungbt.util.common
+package com.platform.util.common
 
 interface CipherUtil {
 

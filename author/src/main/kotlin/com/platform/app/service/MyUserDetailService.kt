@@ -1,4 +1,4 @@
-package com.tungbt.app.service
+package com.platform.app.service
 
 import com.tungbt.app.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired

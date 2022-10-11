@@ -1,8 +1,8 @@
-package com.tungbt.util.common.impl
+package com.platform.util.common.impl
 
-import com.tungbt.util.common.CollectionUtil
-import com.tungbt.util.common.ReflectUtil
-import com.tungbt.util.common.SpELUtil
+import com.platform.util.common.CollectionUtil
+import com.platform.util.common.ReflectUtil
+import com.platform.util.common.SpELUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.expression.Expression
 import org.springframework.expression.ExpressionParser

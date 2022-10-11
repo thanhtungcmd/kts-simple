@@ -1,4 +1,4 @@
-package com.tungbt.util.telegrambot
+package com.platform.util.telegrambot
 
 interface TelegramBot {
 

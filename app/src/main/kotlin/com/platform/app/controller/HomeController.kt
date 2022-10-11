@@ -1,14 +1,14 @@
 package com.platform.app.controller
 
-import com.tungbt.app.dto.response.HomeResponse
-import com.tungbt.app.dto.response.HomeResponse.Companion.response
-import com.tungbt.util.audit.Audit
-import com.tungbt.util.audit.ExecuteTime
-import com.tungbt.util.common.CipherUtil
-import com.tungbt.util.common.StringUtil
-import com.tungbt.util.security.util.SecurityUtil
-import com.tungbt.util.telegrambot.TelegramBot
-import com.tungbt.util.rest.response.Result
+import com.platform.app.dto.response.HomeResponse
+import com.platform.app.dto.response.HomeResponse.Companion.response
+import com.platform.util.audit.Audit
+import com.platform.util.audit.ExecuteTime
+import com.platform.util.common.CipherUtil
+import com.platform.util.common.StringUtil
+import com.platform.util.security.util.SecurityUtil
+import com.platform.util.telegrambot.TelegramBot
+import com.platform.util.rest.response.Result
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.ResponseEntity

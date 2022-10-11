@@ -1,6 +1,6 @@
-package com.tungbt.util.common.impl.cipher
+package com.platform.util.common.impl.cipher
 
-import com.tungbt.util.common.CipherUtil
+import com.platform.util.common.CipherUtil
 import org.springframework.stereotype.Component
 import java.security.KeyFactory
 import java.security.PublicKey

@@ -1,7 +1,7 @@
-package com.tungbt.util.common.impl
+package com.platform.util.common.impl
 
-import com.tungbt.util.common.CollectionUtil
-import com.tungbt.util.common.ReflectUtil
+import com.platform.util.common.CollectionUtil
+import com.platform.util.common.ReflectUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer
 import org.springframework.core.ParameterNameDiscoverer

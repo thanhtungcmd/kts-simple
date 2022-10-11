@@ -1,4 +1,4 @@
-package com.tungbt.util.rest.response
+package com.platform.util.rest.response
 
 abstract class BaseResponseAbstract: BaseResponse {
 

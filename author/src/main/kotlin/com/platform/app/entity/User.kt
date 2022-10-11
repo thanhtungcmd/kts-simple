@@ -1,4 +1,4 @@
-package com.tungbt.app.entity
+package com.platform.app.entity
 
 import javax.persistence.*
 

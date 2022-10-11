@@ -1,4 +1,4 @@
-package com.tungbt.app.config
+package com.platform.app.config
 
 import com.tungbt.app.service.MyUserDetailService
 import org.springframework.beans.factory.annotation.Autowired

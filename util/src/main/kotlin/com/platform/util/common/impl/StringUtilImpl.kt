@@ -1,6 +1,6 @@
-package com.tungbt.util.common.impl
+package com.platform.util.common.impl
 
-import com.tungbt.util.common.StringUtil
+import com.platform.util.common.StringUtil
 import org.springframework.stereotype.Component
 
 @Component

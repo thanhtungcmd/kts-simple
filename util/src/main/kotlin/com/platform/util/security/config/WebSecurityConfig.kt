@@ -1,4 +1,4 @@
-package com.tungbt.util.security.config
+package com.platform.util.security.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

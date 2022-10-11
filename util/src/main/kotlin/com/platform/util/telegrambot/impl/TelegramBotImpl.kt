@@ -1,7 +1,7 @@
-package com.tungbt.util.telegrambot.impl
+package com.platform.util.telegrambot.impl
 
-import com.tungbt.util.common.RestUtil
-import com.tungbt.util.telegrambot.TelegramBot
+import com.platform.util.common.RestUtil
+import com.platform.util.telegrambot.TelegramBot
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -11,7 +11,7 @@ class TelegramBotImpl: TelegramBot {
 
     private val url: String = "https://api.telegram.org/bot"
 
-    @Value("\${tungbt.telegrambot.token}")
+    @Value("\${platform.telegrambot.token}")
     lateinit var token: String
 
     @Autowired

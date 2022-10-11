@@ -1,4 +1,4 @@
-package com.tungbt.app.repository
+package com.platform.app.repository
 
 import com.tungbt.app.entity.User
 import org.springframework.data.jpa.repository.JpaRepository

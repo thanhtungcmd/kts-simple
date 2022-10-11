@@ -1,7 +1,7 @@
-package com.tungbt.util.common.impl
+package com.platform.util.common.impl
 
 import com.google.gson.Gson
-import com.tungbt.util.common.RestUtil
+import com.platform.util.common.RestUtil
 import okhttp3.Headers.Companion.toHeaders
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull

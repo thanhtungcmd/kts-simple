@@ -1,4 +1,4 @@
-package com.tungbt.app.util
+package com.platform.app.util
 
 import com.tungbt.app.entity.User
 import com.tungbt.app.repository.UserRepository
